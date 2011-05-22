@@ -18,6 +18,11 @@ namespace ELAProject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D spaceTexture;
+        Rectangle Viewport;
+        GameComponent frat;
+        const int MAXROUND = 5;
+        GameComponent[] round;
 
         public Game1()
         {
@@ -46,6 +51,10 @@ namespace ELAProject
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            spaceTexture = Content.Load<Texture2D>("Sprites\\space");
+
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -83,9 +92,16 @@ namespace ELAProject
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            spriteBatch.Begin();
+            spriteBatch.Draw(spaceTexture, Viewport, Color.White);
+            
+
+
             // TODO: Add your drawing code here
 
+            spriteBatch.Begin();
             base.Draw(gameTime);
+            
         }
     }
 }
