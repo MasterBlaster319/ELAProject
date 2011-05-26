@@ -20,8 +20,11 @@ namespace ELAProject
        
         Texture2D spaceTexture;
         Rectangle ViewportRect;
-        
+        GameObject Frat;
         SpriteBatch spriteBatch;
+        
+        KeyboardState previousKeyboardState = Keyboard.GetState();
+        
 
         public Game1()
         {
@@ -56,6 +59,9 @@ namespace ELAProject
             ViewportRect = new Rectangle(0, 0,
                 graphics.GraphicsDevice.Viewport.Width,
                 graphics.GraphicsDevice.Viewport.Height);
+            
+            Frat = new GameObject(Content.Load<Texture2D>("Sprites\\frat"));
+            Frat.position = new Vector2(250, graphics.GraphicsDevice.Viewport.Height - 250);
 
 
 
@@ -84,6 +90,20 @@ namespace ELAProject
 
             // TODO: Add your update logic here
 
+            if (previousKeyboardState.IsKeyDown(Keys.S))
+            {
+                Frat.position.Y = Frat.position.Y + 1.75f;
+            }
+            else if (previousKeyboardState.IsKeyDown(Keys.A))
+                Frat.position.X = Frat.position.X - 1.75f;
+            else if (previousKeyboardState.IsKeyDown(Keys.W))
+                Frat.position.Y = Frat.position.Y - 1.75f;
+            else if (previousKeyboardState.IsKeyDown(Keys.D))
+                Frat.position.X = Frat.position.X + 1.75f;
+            
+            
+            
+            
             base.Update(gameTime);
         }
 
@@ -95,8 +115,18 @@ namespace ELAProject
         {
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
             spriteBatch.Draw(spaceTexture, ViewportRect, Color.White);
+            
+            spriteBatch.Draw(Frat.sprite,
+                Frat.position,
+                null,
+                Color.White);
+            
+            
+            
+            
+            
             spriteBatch.End();
             
 

@@ -1,0 +1,10 @@
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\space.xnb
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\round.xnb
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\enemy.xnb
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\frat.xnb
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\ELAProject.exe
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\ELAProject.pdb
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ELAProject.exe
+C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ELAProject.pdb
