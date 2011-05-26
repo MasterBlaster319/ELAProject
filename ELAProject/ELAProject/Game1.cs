@@ -17,12 +17,11 @@ namespace ELAProject
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+       
         Texture2D spaceTexture;
-        Rectangle Viewport;
-        GameComponent frat;
-        const int MAXROUND = 5;
-        GameComponent[] round;
+        Rectangle ViewportRect;
+        
+        SpriteBatch spriteBatch;
 
         public Game1()
         {
@@ -50,9 +49,13 @@ namespace ELAProject
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+
 
             spaceTexture = Content.Load<Texture2D>("Sprites\\space");
+            ViewportRect = new Rectangle(0, 0,
+                graphics.GraphicsDevice.Viewport.Width,
+                graphics.GraphicsDevice.Viewport.Height);
 
 
 
@@ -90,16 +93,17 @@ namespace ELAProject
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-            spriteBatch.Draw(spaceTexture, Viewport, Color.White);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
+            spriteBatch.Draw(spaceTexture, ViewportRect, Color.White);
+            spriteBatch.End();
             
 
 
             // TODO: Add your drawing code here
 
-            spriteBatch.End();
+            
             base.Draw(gameTime);
             
         }
