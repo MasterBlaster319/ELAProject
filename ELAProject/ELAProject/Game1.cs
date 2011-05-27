@@ -64,7 +64,7 @@ namespace ELAProject
             Frat.position = new Vector2(250, graphics.GraphicsDevice.Viewport.Height - 250);
 
 
-
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -85,20 +85,18 @@ namespace ELAProject
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
             KeyboardState keyboardState = Keyboard.GetState();
-            if (previousKeyboardState.IsKeyDown(Keys.S))
+            
+            if (keyboardState.IsKeyDown(Keys.S))
             {
-                Frat.position.Y = Frat.position.Y + 1.75f;
+                Frat.position.Y = Frat.position.Y + 5f;
             }
-            else if (previousKeyboardState.IsKeyDown(Keys.A))
-                Frat.position.X = Frat.position.X - 1.75f;
-            else if (previousKeyboardState.IsKeyDown(Keys.W))
-                Frat.position.Y = Frat.position.Y - 1.75f;
-            else if (previousKeyboardState.IsKeyDown(Keys.D))
-                Frat.position.X = Frat.position.X + 1.75f;
+            else if (keyboardState.IsKeyDown(Keys.A))
+                Frat.position.X = Frat.position.X - 5f;
+            else if (keyboardState.IsKeyDown(Keys.W))
+                Frat.position.Y = Frat.position.Y - 5f;
+            else if (keyboardState.IsKeyDown(Keys.D))
+                Frat.position.X = Frat.position.X + 5f;
 
             // TODO: Add your update logic here
             
