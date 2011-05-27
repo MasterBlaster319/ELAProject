@@ -88,8 +88,7 @@ namespace ELAProject
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
-
+            KeyboardState keyboardState = Keyboard.GetState();
             if (previousKeyboardState.IsKeyDown(Keys.S))
             {
                 Frat.position.Y = Frat.position.Y + 1.75f;
@@ -100,9 +99,8 @@ namespace ELAProject
                 Frat.position.Y = Frat.position.Y - 1.75f;
             else if (previousKeyboardState.IsKeyDown(Keys.D))
                 Frat.position.X = Frat.position.X + 1.75f;
-            
-            
-            
+
+            // TODO: Add your update logic here
             
             base.Update(gameTime);
         }
@@ -115,13 +113,18 @@ namespace ELAProject
         {
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
+            spriteBatch.Begin();
             spriteBatch.Draw(spaceTexture, ViewportRect, Color.White);
-            
+
             spriteBatch.Draw(Frat.sprite,
                 Frat.position,
                 null,
-                Color.White);
+                Color.White,
+                Frat.rotation,
+                Frat.center,
+                1.0f,
+                SpriteEffects.None,
+                0);
             
             
             
