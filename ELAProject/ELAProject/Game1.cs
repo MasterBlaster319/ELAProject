@@ -17,12 +17,12 @@ namespace ELAProject
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-       
         Texture2D spaceTexture;
         Rectangle ViewportRect;
         GameObject Frat;
         SpriteBatch spriteBatch;
-        
+        GameObject[] Round;
+        const int MAXROUND = 5;
         KeyboardState previousKeyboardState = Keyboard.GetState();
         
 
@@ -32,6 +32,12 @@ namespace ELAProject
             Content.RootDirectory = "Content";
         }
 
+        
+        
+        
+        
+        
+        
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -63,6 +69,11 @@ namespace ELAProject
             Frat = new GameObject(Content.Load<Texture2D>("Sprites\\frat"));
             Frat.position = new Vector2(250, graphics.GraphicsDevice.Viewport.Height - 250);
 
+            Round = new GameObject[MAXROUND];
+            for (int i = 0; i < MAXROUND; i++)
+            {
+                Round[i] = new GameObject(Content.Load<Texture2D>("Sprites\\round"));
+            }
 
             
             // TODO: use this.Content to load your game content here
@@ -98,9 +109,58 @@ namespace ELAProject
             else if (keyboardState.IsKeyDown(Keys.D))
                 Frat.position.X = Frat.position.X + 5f;
 
+            if (keyboardState.IsKeyDown(Keys.Space) && previousKeyboardState.IsKeyUp(Keys.Space))
+                
+                FireRound();
+
             // TODO: Add your update logic here
             
+            
+            UpdateRounds();
             base.Update(gameTime);
+        }
+
+
+
+
+        public void FireRound()
+        {
+            foreach (GameObject round in Round)
+            {
+                if (!round.alive)
+                {
+                    round.alive = true;
+                    round.position = Frat.position - round.center;
+                    round.velocity = new Vector2(
+                        (float)Math.Cos(Frat.rotation),
+                        (float)Math.Sin(Frat.rotation))
+                        * 5.0f;
+                    return;
+                }
+            }
+        }
+
+        public void UpdateRounds()
+        {
+            foreach (GameObject round in Round)
+            {
+                if (round.alive)
+                {
+                    round.position += round.velocity;
+                    if (!Viewport.Contains(new Point(
+                        (int)round.position.X,
+                        (int)round.position.Y)))
+                    {
+                        round.alive = false;
+                        continue;
+                    }
+                    Rectangle roundRect = new Rectangle(
+                        (int)round.position.X,
+                        (int)round.position.Y,
+                        round.sprite.Width,
+                        round.sprite.Height);
+                }
+            }
         }
 
         /// <summary>
@@ -125,8 +185,7 @@ namespace ELAProject
                 0);
             
             
-            
-            
+                
             
             spriteBatch.End();
             
