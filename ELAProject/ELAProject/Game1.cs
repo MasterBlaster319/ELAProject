@@ -21,7 +21,7 @@ namespace ELAProject
         Rectangle ViewportRect;
         GameObject Frat;
         SpriteBatch spriteBatch;
-        GameObject[] Round;
+        GameObject[] Rounds;
         const int MAXROUND = 5;
         KeyboardState previousKeyboardState = Keyboard.GetState();
         
@@ -69,10 +69,10 @@ namespace ELAProject
             Frat = new GameObject(Content.Load<Texture2D>("Sprites\\frat"));
             Frat.position = new Vector2(250, graphics.GraphicsDevice.Viewport.Height - 250);
 
-            Round = new GameObject[MAXROUND];
+            Rounds = new GameObject[MAXROUND];
             for (int i = 0; i < MAXROUND; i++)
             {
-                Round[i] = new GameObject(Content.Load<Texture2D>("Sprites\\round"));
+                Rounds[i] = new GameObject(Content.Load<Texture2D>("Sprites\\round"));
             }
 
             
@@ -98,6 +98,11 @@ namespace ELAProject
             // Allows the game to exit
             KeyboardState keyboardState = Keyboard.GetState();
             
+            if (keyboardState.IsKeyDown(Keys.Up && Keys.Space))
+
+            
+            
+            
             if (keyboardState.IsKeyDown(Keys.S))
             {
                 Frat.position.Y = Frat.position.Y + 5f;
@@ -120,34 +125,14 @@ namespace ELAProject
             base.Update(gameTime);
         }
 
-
-
-
-        public void FireRound()
-        {
-            foreach (GameObject round in Round)
-            {
-                if (!round.alive)
-                {
-                    round.alive = true;
-                    round.position = Frat.position - round.center;
-                    round.velocity = new Vector2(
-                        (float)Math.Cos(Frat.rotation),
-                        (float)Math.Sin(Frat.rotation))
-                        * 5.0f;
-                    return;
-                }
-            }
-        }
-
         public void UpdateRounds()
         {
-            foreach (GameObject round in Round)
+            foreach (GameObject round in Rounds)
             {
                 if (round.alive)
                 {
                     round.position += round.velocity;
-                    if (!Viewport.Contains(new Point(
+                    if(!ViewportRect.Contains(new Point(
                         (int)round.position.X,
                         (int)round.position.Y)))
                     {
@@ -162,6 +147,26 @@ namespace ELAProject
                 }
             }
         }
+
+
+        public void FireRound()
+        {
+            foreach (GameObject round in Rounds)
+            {
+                if (!round.alive)
+                {
+                    round.alive = true;
+                    round.position = Frat.position - round.center;
+                    round.velocity = new Vector2(
+                        (float)Math.Cos(Frat.rotation),
+                        (float)Math.Sin(Frat.rotation))
+                        * 5.0f;
+                    return;
+                }
+            }
+        }
+
+        
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -183,8 +188,14 @@ namespace ELAProject
                 1.0f,
                 SpriteEffects.None,
                 0);
-            
-            
+            foreach (GameObject round in Rounds)
+            {
+                if (round.alive)
+                {
+                    spriteBatch.Draw(round.sprite,
+                        round.position, Color.White);
+                }
+            }
                 
             
             spriteBatch.End();
