@@ -22,7 +22,7 @@ namespace ELAProject
         GameObject Frat;
         SpriteBatch spriteBatch;
         GameObject[] Rounds;
-        const int MAXROUND = 5;
+        const int MAXROUND = 15;
         KeyboardState previousKeyboardState = Keyboard.GetState();
         
 
@@ -97,11 +97,26 @@ namespace ELAProject
         {
             // Allows the game to exit
             KeyboardState keyboardState = Keyboard.GetState();
-            
-            if (keyboardState.IsKeyDown(Keys.Up && Keys.Space))
 
-            
-            
+            if (keyboardState.IsKeyDown(Keys.Up) && keyboardState.IsKeyDown(Keys.Space))
+            {
+                FireRound() Y += 0.1f;
+            }
+
+            if (keyboardState.IsKeyDown(Keys.Down) && keyboardState.IsKeyDown(Keys.Space))
+            {
+                FireRound();
+            }
+
+            if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Space))
+            {
+                FireRound();
+            }
+
+            if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Space))
+            {
+                FireRound();
+            }
             
             if (keyboardState.IsKeyDown(Keys.S))
             {
@@ -122,6 +137,7 @@ namespace ELAProject
             
             
             UpdateRounds();
+            previousKeyboardState = keyboardState;
             base.Update(gameTime);
         }
 
