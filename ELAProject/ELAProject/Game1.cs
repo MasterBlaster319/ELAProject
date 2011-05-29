@@ -113,10 +113,7 @@ namespace ELAProject
         {
             // Allows the game to exit
             KeyboardState keyboardState = Keyboard.GetState();
-
-            {
-                string yAxis = "Y";
-                string xAxis = "X";
+            // Trying to get the round to fire in the direction of the arrow key pressed when space and one of the arrows is pressed
 
                 if (keyboardState.IsKeyDown(Keys.Up) && keyboardState.IsKeyDown(Keys.Space))
                 {
@@ -137,8 +134,6 @@ namespace ELAProject
                 {
                     FireRound(); X += 0.1f;
                 }
-
-            }
 
 
             if (keyboardState.IsKeyDown(Keys.A))
