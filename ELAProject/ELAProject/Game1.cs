@@ -24,8 +24,17 @@ namespace ELAProject
         GameObject[] Rounds;
         const int MAXROUND = 15;
         KeyboardState previousKeyboardState = Keyboard.GetState();
-        
 
+        const int MAXENEMIES = 5;
+        const float MAXENEMYHEIGHT = 0f;
+        const float MINENEMYHEIGHT = 0f;
+        const float MAXENEMYVELOCITY = 5f;
+        const float MINENEMYVELOCITY = 1f;
+        Random random = new Random();
+        GameObject[] enemies;
+        
+        
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -75,6 +84,13 @@ namespace ELAProject
                 Rounds[i] = new GameObject(Content.Load<Texture2D>("Sprites\\round"));
             }
 
+            enemies = new GameObject[MAXENEMIES];
+            for (int z = 0; z < MAXENEMIES; z++)
+            {
+                enemies[z] = new GameObject(
+                    Content.Load<Texture2D>("Sprites\\enemy"));
+            }
+
             
             // TODO: use this.Content to load your game content here
         }
@@ -98,44 +114,51 @@ namespace ELAProject
             // Allows the game to exit
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.Up) && keyboardState.IsKeyDown(Keys.Space))
             {
-                FireRound() Y += 0.1f;
+                string yAxis = "Y";
+                string xAxis = "X";
+
+                if (keyboardState.IsKeyDown(Keys.Up) && keyboardState.IsKeyDown(Keys.Space))
+                {
+                    FireRound(); Y += 0.1f;
+                }
+
+                if (keyboardState.IsKeyDown(Keys.Down) && keyboardState.IsKeyDown(Keys.Space))
+                {
+                    FireRound(); Y -= 0.1f;
+                }
+
+                if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Space))
+                {
+                    FireRound(); X -= 0.1f;
+                }
+
+                if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Space))
+                {
+                    FireRound(); X += 0.1f;
+                }
+
             }
 
-            if (keyboardState.IsKeyDown(Keys.Down) && keyboardState.IsKeyDown(Keys.Space))
-            {
-                FireRound();
-            }
 
-            if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Space))
-            {
-                FireRound();
-            }
-
-            if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Space))
-            {
-                FireRound();
-            }
-            
-            if (keyboardState.IsKeyDown(Keys.S))
-            {
-                Frat.position.Y = Frat.position.Y + 5f;
-            }
-            else if (keyboardState.IsKeyDown(Keys.A))
+            if (keyboardState.IsKeyDown(Keys.A))
                 Frat.position.X = Frat.position.X - 5f;
             else if (keyboardState.IsKeyDown(Keys.W))
                 Frat.position.Y = Frat.position.Y - 5f;
             else if (keyboardState.IsKeyDown(Keys.D))
                 Frat.position.X = Frat.position.X + 5f;
+            if (keyboardState.IsKeyDown(Keys.S))
+            {
+                Frat.position.Y = Frat.position.Y + 5f;
+            }
 
             if (keyboardState.IsKeyDown(Keys.Space) && previousKeyboardState.IsKeyUp(Keys.Space))
-                
+
                 FireRound();
 
             // TODO: Add your update logic here
-            
-            
+
+
             UpdateRounds();
             previousKeyboardState = keyboardState;
             base.Update(gameTime);
