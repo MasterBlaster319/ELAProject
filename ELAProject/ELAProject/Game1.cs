@@ -22,18 +22,26 @@ namespace ELAProject
         GameObject Frat;
         SpriteBatch spriteBatch;
         GameObject[] Rounds;
-        const int MAXROUND = 15;
+        const int MAXROUND = 20;
         KeyboardState previousKeyboardState = Keyboard.GetState();
 
-        const int MAXENEMIES = 5;
-        const float MAXENEMYHEIGHT = 0f;
-        const float MINENEMYHEIGHT = 0f;
-        const float MAXENEMYVELOCITY = 5f;
-        const float MINENEMYVELOCITY = 1f;
+        const int MAXENEMIES = 7;
+        const float MAXENEMYHEIGHT = 0.85f;
+        const float MINENEMYHEIGHT = 0.01f;
+        const float MAXENEMYVELOCITY = 5.0f;
+        const float MINENEMYVELOCITY = 1.0f;
         Random random = new Random();
         GameObject[] enemies;
-        
-        
+
+        int score;
+        SpriteFont font;
+        Vector2 scoreDrawPoint = new Vector2(
+            0.1f,
+            0.1f);
+        MediaLibrary sampleMediaLibrary;
+        Random rand;
+
+
         
         public Game1()
         {
@@ -41,10 +49,6 @@ namespace ELAProject
             Content.RootDirectory = "Content";
         }
 
-        
-        
-        
-        
         
         
         /// <summary>
@@ -74,7 +78,7 @@ namespace ELAProject
             ViewportRect = new Rectangle(0, 0,
                 graphics.GraphicsDevice.Viewport.Width,
                 graphics.GraphicsDevice.Viewport.Height);
-            
+
             Frat = new GameObject(Content.Load<Texture2D>("Sprites\\frat"));
             Frat.position = new Vector2(250, graphics.GraphicsDevice.Viewport.Height - 250);
 
@@ -90,11 +94,24 @@ namespace ELAProject
                 enemies[z] = new GameObject(
                     Content.Load<Texture2D>("Sprites\\enemy"));
             }
+            ViewportRect = new Rectangle(0, 0,
+                graphics.GraphicsDevice.Viewport.Width,
+                graphics.GraphicsDevice.Viewport.Height);
 
-            
+            font = Content.Load<SpriteFont>("Fonts\\GameFont");
+            {
+                sampleMediaLibrary = new MediaLibrary();
+                rand = new Random();
+
+                MediaPlayer.Stop();
+
+
+                int i = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
+
+                MediaPlayer.Play(sampleMediaLibrary.Albums[i].Songs[0]);
+            }
             // TODO: use this.Content to load your game content here
         }
-
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -115,33 +132,16 @@ namespace ELAProject
             KeyboardState keyboardState = Keyboard.GetState();
             // Trying to get the round to fire in the direction of the arrow key pressed when space and one of the arrows is pressed
 
-                if (keyboardState.IsKeyDown(Keys.Up) && keyboardState.IsKeyDown(Keys.Space))
-                {
-                    FireRound(); Y += 0.1f;
-                }
-
-                if (keyboardState.IsKeyDown(Keys.Down) && keyboardState.IsKeyDown(Keys.Space))
-                {
-                    FireRound(); Y -= 0.1f;
-                }
-
-                if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Space))
-                {
-                    FireRound(); X -= 0.1f;
-                }
-
-                if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Space))
-                {
-                    FireRound(); X += 0.1f;
-                }
-
 
             if (keyboardState.IsKeyDown(Keys.A))
                 Frat.position.X = Frat.position.X - 5f;
+            
             else if (keyboardState.IsKeyDown(Keys.W))
                 Frat.position.Y = Frat.position.Y - 5f;
+            
             else if (keyboardState.IsKeyDown(Keys.D))
                 Frat.position.X = Frat.position.X + 5f;
+            
             if (keyboardState.IsKeyDown(Keys.S))
             {
                 Frat.position.Y = Frat.position.Y + 5f;
@@ -153,31 +153,40 @@ namespace ELAProject
 
             // TODO: Add your update logic here
 
-
+            UpdateEnemies();
             UpdateRounds();
             previousKeyboardState = keyboardState;
             base.Update(gameTime);
         }
 
-        public void UpdateRounds()
+        public void UpdateEnemies()
         {
-            foreach (GameObject round in Rounds)
+            foreach (GameObject enemy in enemies)
             {
-                if (round.alive)
+                if (enemy.alive)
                 {
-                    round.position += round.velocity;
-                    if(!ViewportRect.Contains(new Point(
-                        (int)round.position.X,
-                        (int)round.position.Y)))
+                    enemy.position += enemy.velocity;
+                    if (!ViewportRect.Contains(new Point(
+                    (int)enemy.position.X,
+                    (int)enemy.position.Y)))
                     {
-                        round.alive = false;
-                        continue;
+                        enemy.alive = false;
                     }
-                    Rectangle roundRect = new Rectangle(
-                        (int)round.position.X,
-                        (int)round.position.Y,
-                        round.sprite.Width,
-                        round.sprite.Height);
+                }
+                else
+                {
+                    enemy.alive = true;
+                    enemy.position = new Vector2(
+                        ViewportRect.Right,
+                        MathHelper.Lerp(
+                        (float)ViewportRect.Height * MINENEMYHEIGHT,
+                        (float)ViewportRect.Height * MAXENEMYHEIGHT,
+                        (float)random.NextDouble()));
+                    enemy.velocity = new Vector2(
+                        MathHelper.Lerp(
+                        -MINENEMYVELOCITY,
+                        -MAXENEMYVELOCITY,
+                        (float)random.NextDouble()), 0);
                 }
             }
         }
@@ -196,11 +205,54 @@ namespace ELAProject
                         (float)Math.Sin(Frat.rotation))
                         * 5.0f;
                     return;
+
+
                 }
             }
         }
 
-        
+        public void UpdateRounds()
+        {
+            foreach (GameObject round in Rounds)
+            {
+                if (round.alive)
+                {
+                    round.position += round.velocity;
+                    if (!ViewportRect.Contains(new Point(
+                        (int)round.position.X,
+                        (int)round.position.Y)))
+                    {
+                        round.alive = false;
+                        continue;
+                    }
+                    Rectangle roundRect = new Rectangle(
+                        (int)round.position.X,
+                        (int)round.position.Y,
+                        round.sprite.Width,
+                        round.sprite.Height);
+
+                    foreach (GameObject enemy in enemies)
+                    {
+                        Rectangle enemyRect = new Rectangle(
+                            (int)enemy.position.X,
+                            (int)enemy.position.Y,
+                            enemy.sprite.Width,
+                            enemy.sprite.Height);
+                        if (roundRect.Intersects(enemyRect))
+                        {
+                            round.alive = false;
+                            enemy.alive = false;
+                            score += 5;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -209,10 +261,18 @@ namespace ELAProject
         protected override void Draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             spriteBatch.Begin();
             spriteBatch.Draw(spaceTexture, ViewportRect, Color.White);
-
+            foreach (GameObject round in Rounds)
+            {
+                if (round.alive)
+                {
+                    spriteBatch.Draw(round.sprite,
+                        round.position, Color.White);
+                }
+            }
+            
             spriteBatch.Draw(Frat.sprite,
                 Frat.position,
                 null,
@@ -222,16 +282,27 @@ namespace ELAProject
                 1.0f,
                 SpriteEffects.None,
                 0);
-            foreach (GameObject round in Rounds)
-            {
-                if (round.alive)
-                {
-                    spriteBatch.Draw(round.sprite,
-                        round.position, Color.White);
-                }
-            }
                 
-            
+
+
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.alive)
+                {
+                    spriteBatch.Draw(enemy.sprite,
+                        enemy.position, Color.White);
+
+                }
+
+            }
+
+            spriteBatch.DrawString(font, "Score: " + score.ToString(),
+                new Vector2(scoreDrawPoint.X * ViewportRect.Width,
+                    scoreDrawPoint.Y * ViewportRect.Height),
+                    Color.Green);
+
+
+
             spriteBatch.End();
             
 

@@ -19,11 +19,10 @@ namespace ELAProject
 
         public GameObject(Texture2D LoadedTexture)
         {
-            rotation = 0.0f;
             position = Vector2.Zero;
             sprite = LoadedTexture;
             center = new Vector2(sprite.Width / 2, sprite.Height / 2);
-            velocity = Vector2.Zero;
+            velocity = Vector2.One;
             alive = false;
         }
     }

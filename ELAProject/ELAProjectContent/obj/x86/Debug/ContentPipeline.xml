@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\enemy.xnb</Output>
-      <Time>2011-05-26T15:10:05.3214568-04:00</Time>
+      <Time>2011-05-30T10:48:24.7516685-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\frat.png</Source>
@@ -36,6 +36,15 @@
       <Options>None</Options>
       <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\space.xnb</Output>
       <Time>2011-05-26T13:58:57.9544568-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\GameFont.spritefont</Source>
+      <Name>Fonts\GameFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Fonts\GameFont.xnb</Output>
+      <Time>2011-05-30T12:32:18.1306685-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
