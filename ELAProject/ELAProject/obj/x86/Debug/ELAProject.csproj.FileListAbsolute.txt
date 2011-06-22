@@ -9,3 +9,14 @@ C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\obj\x86\Debug\Microsoft
 C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ELAProject.exe
 C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ELAProject.pdb
 C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Fonts\GameFont.xnb
+J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\enemy.xnb
+J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\frat.xnb
+J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\round.xnb
+J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\space.xnb
+J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Fonts\GameFont.xnb
+J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\ELAProject.exe
+J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\ELAProject.pdb
+J:\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ResolveAssemblyReference.cache
+J:\ELAProject\ELAProject\ELAProject\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+J:\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ELAProject.exe
+J:\ELAProject\ELAProject\ELAProject\obj\x86\Debug\ELAProject.pdb

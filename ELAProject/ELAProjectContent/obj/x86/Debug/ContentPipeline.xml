@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\enemy.xnb</Output>
-      <Time>2011-05-30T10:48:24.7516685-04:00</Time>
+      <Output>J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\enemy.xnb</Output>
+      <Time>2011-06-01T10:26:42-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\frat.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\frat.xnb</Output>
-      <Time>2011-05-27T16:15:20.7722686-04:00</Time>
+      <Output>J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\frat.xnb</Output>
+      <Time>2011-05-27T16:15:22-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\round.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\round.xnb</Output>
-      <Time>2011-05-26T13:58:06.0044568-04:00</Time>
+      <Output>J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\round.xnb</Output>
+      <Time>2011-05-26T13:58:08-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\space.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\space.xnb</Output>
-      <Time>2011-05-26T13:58:57.9544568-04:00</Time>
+      <Output>J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Sprites\space.xnb</Output>
+      <Time>2011-05-30T14:28:28-04:00</Time>
     </Item>
     <Item>
       <Source>Fonts\GameFont.spritefont</Source>
@@ -43,8 +43,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Fonts\GameFont.xnb</Output>
-      <Time>2011-05-30T12:32:18.1306685-04:00</Time>
+      <Output>J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\Fonts\GameFont.xnb</Output>
+      <Time>2011-05-30T14:32:42-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -52,10 +52,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProjectContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProjectContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Brandy\Desktop\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>J:\ELAProject\ELAProject\ELAProjectContent\</RootDirectory>
+      <LoggerRootDirectory>J:\ELAProject\ELAProject\ELAProject\</LoggerRootDirectory>
+      <IntermediateDirectory>J:\ELAProject\ELAProject\ELAProjectContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>J:\ELAProject\ELAProject\ELAProject\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

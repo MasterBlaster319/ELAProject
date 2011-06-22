@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace ELAProject
 {
-    /// <summary>
+    /// <summary> w
     /// This is the main type for your game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
@@ -26,7 +26,7 @@ namespace ELAProject
         KeyboardState previousKeyboardState = Keyboard.GetState();
 
         const int MAXENEMIES = 7;
-        const float MAXENEMYHEIGHT = 0.85f;
+        const float MAXENEMYHEIGHT = 0.89f;
         const float MINENEMYHEIGHT = 0.01f;
         const float MAXENEMYVELOCITY = 5.0f;
         const float MINENEMYVELOCITY = 1.0f;
@@ -55,7 +55,7 @@ namespace ELAProject
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
         /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
+        /// and initialize them as well.a
         /// </summary>
         protected override void Initialize()
         {
